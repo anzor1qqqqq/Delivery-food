@@ -142,6 +142,8 @@ body {
     margin-top: 50px;
     display: flex;
     flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
 .card {
@@ -191,19 +193,27 @@ body {
 }
 
 .rest_rating {
-    width: 230px;
     height: 30px;
     margin-top: 10px;
     display: flex;
     align-items: center;
-    justify-content: space-between;
 }
 
 .category_and_price {
     font-style: normal;
     font-weight: 400;
-    font-size: 18px;
+    font-size: 15px;
     line-height: 32px;
     color: #8C8C8C;
 }
 
+.price::after {
+    content: "";
+    width: 5px;
+    height: 5px;
+    display: inline-block;
+    vertical-align: middle;
+    background-color: #8C8C8C;
+    border-radius: 50%;
+    margin-left: 10px;
+}
