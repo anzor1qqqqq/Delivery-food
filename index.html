@@ -5,9 +5,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;700&display=swap" rel="stylesheet">
-
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/stylr.css">
     <link rel="stylesheet" href="css/normalize.css">
     <title>Delivery food</title>
@@ -21,127 +20,153 @@
             <div class="buttons_head">
                 <button class="button_sigin">
                     <img src="img/signIN.svg" alt="" class="img_button_head">
-                    <span style="padding-top: 2px;">Войти</span> 
+                    <span style="padding-top: 2px;" class="button_signin_text">Войти</span> 
                 </button>
                 <button class="button_basket">
                     <img src="img/basket.svg" alt="" class="img_button_head">
-                    <span>Корзина</span>
+                    <span class="button_basket_text">Корзина</span>
                 </button>
             </div>
         </div>
     </header>
 
-    <section class="promo">
-        <div class="content_promo_text">
-            <h1 class="promo_title">Онлайн-сервис <br/> доставки еды на дом</h1>
-            <p class="text_promo">Блюда из любимого ресторана привезет <br/> курьер в перчатках, маске и с антисептиком</p>
+    <main class="main">
+        <div class="container">
+            <section class="promo">
+                <div class="content_promo_text">
+                    <h1 class="promo_title">Онлайн-сервис <br/> доставки еды на дом</h1>
+                    <p class="text_promo">Блюда из любимого ресторана привезет <br/> курьер в перчатках, маске и с антисептиком</p>
+                </div>
+            </section>
+        
+            <section class="rest">
+                <div class="head_rest">
+                    <h1 class="head_title_rest">Рестораны</h1>
+                    <input type="text" class="head_search_rest" placeholder="Поиск блюд и ресторанов">
+                </div>
+        
+                <div class="cards_rest">
+                    <div class="card">
+                        <img src="/img/img rest 1.png" alt="" class="img_card">
+                        <div class="rest_about">
+                            <div class="rest_about_text">
+                                <div class="rest_name">
+                                    <h3 class="title_name_rest">Пицца плюс</h3>
+                                    <span class="about_time_delivery">50 мин</span>
+                                </div>
+                                <div class="rest_rating">
+                                    <img src="/img/rating.png" alt="" class="rating">
+                                    <div class="category_and_price price">От 900 ₽</div>
+                                    <div class="category_and_price category">Пицца, суши</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="/img/img rest 2.png" alt="" class="img_card">
+                        <div class="rest_about">
+                            <div class="rest_about_text">
+                                <div class="rest_name">
+                                    <h3 class="title_name_rest">Тануки</h3>
+                                    <span class="about_time_delivery">90 мин</span>
+                                </div>
+                                <div class="rest_rating">
+                                    <img src="/img/rating.png" alt="" class="rating">
+                                    <div class="category_and_price price">От 1500 ₽</div>
+                                    <div class="category_and_price category">Пицца, суши, вок</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="/img/img rest 3.png" alt="" class="img_card">
+                        <div class="rest_about">
+                            <div class="rest_about_text">
+                                <div class="rest_name">
+                                    <h3 class="title_name_rest">FoodBand</h3>
+                                    <span class="about_time_delivery">30 мин</span>
+                                </div>
+                                <div class="rest_rating">
+                                    <img src="/img/rating.png" alt="" class="rating">
+                                    <div class="category_and_price price">От 1000 ₽</div>
+                                    <div class="category_and_price category">Пицца, пироги, суши</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="/img/img rest 4.png" alt="" class="img_card">
+                        <div class="rest_about">
+                            <div class="rest_about_text">
+                                <div class="rest_name">
+                                    <h3 class="title_name_rest">Жадина-пицца</h3>
+                                    <span class="about_time_delivery">60 мин</span>
+                                </div>
+                                <div class="rest_rating">
+                                    <img src="/img/rating.png" alt="" class="rating">
+                                    <div class="category_and_price price">От 900 ₽</div>
+                                    <div class="category_and_price category">Суши</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="/img/img rest 5.png" alt="" class="img_card">
+                        <div class="rest_about">
+                            <div class="rest_about_text">
+                                <div class="rest_name">
+                                    <h3 class="title_name_rest">Точка еды</h3>
+                                    <span class="about_time_delivery">90 мин</span>
+                                </div>
+                                <div class="rest_rating">
+                                    <img src="/img/rating.png" alt="" class="rating">
+                                    <div class="category_and_price price">От 100 ₽</div>
+                                    <div class="category_and_price category">Пицца, суши</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <img src="/img/img rest 6.png" alt="" class="img_card">
+                        <div class="rest_about">
+                            <div class="rest_about_text">
+                                <div class="rest_name">
+                                    <h3 class="title_name_rest">PizzaBurger</h3>
+                                    <span class="about_time_delivery">120 мин</span>
+                                </div>
+                                <div class="rest_rating">
+                                    <img src="/img/rating.png" alt="" class="rating">
+                                    <div class="category_and_price price">От 1000 ₽</div>
+                                    <div class="category_and_price category">Пицца, бургеры</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-    </section>
+    </main>
 
-    <section class="rest">
-        <div class="head_rest">
-            <h1 class="head_title_rest">Рестораны</h1>
-            <input type="text" class="head_search_rest" placeholder="Поиск блюд и ресторанов">
-        </div>
-
-        <div class="cards_rest">
-            <div class="card">
-                <img src="/img/img rest 1.png" alt="" class="img_card">
-                <div class="rest_about">
-                    <div class="rest_about_text">
-                        <div class="rest_name">
-                            <h3 class="title_name_rest">Пицца плюс</h3>
-                            <span class="about_time_delivery">50 мин</span>
-                        </div>
-                        <div class="rest_rating">
-                            <img src="/img/rating.png" alt="" class="rating" style="margin-right: 20px;">
-                            <div class="category_and_price price" style="margin-right: 15px">От 900 ₽</div>
-                            <div class="category_and_price">Пицца, суши</div>
-                        </div>
-                    </div>
-                </div>
+    <footer class="footer">
+        <div class="footer_conteiner">
+            <div class="footer_nav">
+                <img src="/img/logo3.svg" alt="" class="img_footer">
+                    <nav class="footer_nav_button">
+                        <ul class="footer_ul">
+                            <li class="footer_list">Ресторанам</li>
+                            <li class="footer_list">Курьерам</li>
+                            <li class="footer_list">Пресс-центр</li>
+                            <li class="footer_list">Контакты</li>
+                        </ul>
+                    </nav>
+                </img>
             </div>
-            <div class="card">
-                <img src="/img/img rest 2.png" alt="" class="img_card">
-                <div class="rest_about">
-                    <div class="rest_about_text">
-                        <div class="rest_name">
-                            <h3 class="title_name_rest">Тануки</h3>
-                            <span class="about_time_delivery">90 мин</span>
-                        </div>
-                        <div class="rest_rating">
-                            <img src="/img/rating.png" alt="" class="rating" style="margin-right: 20px;">
-                            <div class="category_and_price price" style="margin-right: 15px">От 1500 ₽</div>
-                            <div class="category_and_price">Пицца, суши, вок</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="/img/img rest 3.png" alt="" class="img_card">
-                <div class="rest_about">
-                    <div class="rest_about_text">
-                        <div class="rest_name">
-                            <h3 class="title_name_rest">FoodBand</h3>
-                            <span class="about_time_delivery">30 мин</span>
-                        </div>
-                        <div class="rest_rating">
-                            <img src="/img/rating.png" alt="" class="rating" style="margin-right: 20px;">
-                            <div class="category_and_price price" style="margin-right: 15px">От 1000 ₽</div>
-                            <div class="category_and_price">Пицца, пироги, суши</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="/img/img rest 4.png" alt="" class="img_card">
-                <div class="rest_about">
-                    <div class="rest_about_text">
-                        <div class="rest_name">
-                            <h3 class="title_name_rest">Жадина-пицца</h3>
-                            <span class="about_time_delivery">60 мин</span>
-                        </div>
-                        <div class="rest_rating">
-                            <img src="/img/rating.png" alt="" class="rating" style="margin-right: 20px;">
-                            <div class="category_and_price price" style="margin-right: 15px">От 900 ₽</div>
-                            <div class="category_and_price">Суши</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="/img/img rest 5.png" alt="" class="img_card">
-                <div class="rest_about">
-                    <div class="rest_about_text">
-                        <div class="rest_name">
-                            <h3 class="title_name_rest">Точка еды</h3>
-                            <span class="about_time_delivery">90 мин</span>
-                        </div>
-                        <div class="rest_rating">
-                            <img src="/img/rating.png" alt="" class="rating" style="margin-right: 20px;">
-                            <div class="category_and_price price" style="margin-right: 15px">От 100 ₽</div>
-                            <div class="category_and_price">Пицца, суши</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <img src="/img/img rest 6.png" alt="" class="img_card">
-                <div class="rest_about">
-                    <div class="rest_about_text">
-                        <div class="rest_name">
-                            <h3 class="title_name_rest">PizzaBurger</h3>
-                            <span class="about_time_delivery">120 мин</span>
-                        </div>
-                        <div class="rest_rating">
-                            <img src="/img/rating.png" alt="" class="rating" style="margin-right: 20px;">
-                            <div class="category_and_price price" style="margin-right: 15px">От 1000 ₽</div>
-                            <div class="category_and_price">Пицца, бургеры</div>
-                        </div>
-                    </div>
-                </div>
+            <div class="footer_social">
+                <img src="/img/inst.png" alt="" class="footer_social_icon">
+                <img src="/img/faceb.png" alt="" class="footer_social_icon">
+                <img src="/img/vk.png" alt="" class="footer_social_icon">
             </div>
         </div>
-    </section>
-</body>
+    </footer>
+</body> 
 </html>
