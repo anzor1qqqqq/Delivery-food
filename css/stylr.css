@@ -286,7 +286,7 @@ body {
 .about_food {
     font-style: normal;
     font-weight: 400;
-    font-size: 16   px;
+    font-size: 16px;
     line-height: 21px;
     color: #8C8C8C;
     white-space: nowrap;
@@ -560,6 +560,32 @@ body {
 
     .footer_ul {
         display: block;
+    }
+
+    .title_name_food {
+        font-size: 20px;
+    }
+
+    .about_food {
+        font-size: 13px;
+    }
+
+    .button_food {
+        padding: 20px 45px 8px 15px;
+        background-position: center;
+        font-size: 0;
+    }
+
+    .price_food {
+        font-size: 15px;
+    }
+
+    .price_button_food {
+        justify-content: center;
+    }
+
+    .title_food {
+        justify-content: center;
     }
 }
 
