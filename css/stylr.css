@@ -906,4 +906,32 @@ body {
     .modal_title {
         justify-content: end;
     }
+
+    .modal_container {
+        padding: 30px 20px 10px 20px;
+    }
+
+    .modal_list_item:not(:last-child) {
+        margin-bottom: 0; 
+    }
+
+    .modal_list_text {
+        font-size: 10px;
+    }
+
+    .modal_list_price {
+        margin-bottom: 5px;
+    }
+
+    .modal_list_text {
+        margin-bottom: 0; 
+    }
+
+    .modal_list_price {
+        line-height: 10px;
+    }
+
+    .modal_list {
+        margin: 0;
+    }
 }
