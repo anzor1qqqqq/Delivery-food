@@ -665,6 +665,56 @@ body {
     .search_address {
         font-size: 15px;
     }
+
+    .modal_title_text {
+        font-size: 25px;
+    }
+
+    .modal_list_text {
+        font-size: 15px;
+    }
+
+    .modal_list_price {
+        font-size: 15px;
+    }
+
+    .modal_list_buttons_minus {
+        width: 25px;
+        height: 25px;
+    }
+
+    .modal_list_buttons_plus {
+        width: 25px;
+        height: 25px;
+    }
+
+    .modal_list_buttons_number {
+        font-size: 12px;
+    }
+
+    .modal_button_buy_price {
+        padding: 10px 15px;
+        font-size: 12px;
+    }
+
+    .modal_button_buy_complete {
+        padding: 5px 15px;
+        font-size: 12px;
+    }
+
+    .modal_button_buy_cancel {
+        padding: 5px 15px;
+        font-size: 11px;
+    }
+
+    .modal_title_exit {
+        width: 22px;
+        height: 19px;
+    }
+
+    .modal_list_buttons {
+        margin-left: 20px;
+    }
 }
 
 @media (max-width: 580px) {
@@ -746,6 +796,66 @@ body {
     .title_food {
         justify-content: center;
     }
+
+    .modal_list_item {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .modal_list_buttons {
+        margin-left: 0;
+    }
+
+    .modal_list_text {
+        margin-right: 0;
+        margin-bottom: 5px;
+    }
+
+    .modal_list_item {
+        align-items: center;
+        border-bottom: 1px black solid;
+    }
+
+    .modal_list_price {
+        margin-bottom: 10px;
+    }
+
+    .modal_list_buttons {
+        margin-bottom: 5px;
+    }
+
+    .modal_buttons_buy {
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .modal_button_buy_price {
+        margin: 0;
+        padding: 5px 10px;
+        font-size: 11px;
+        margin-bottom: 10px;
+    }
+
+    .modal_button_buy_complete {
+        margin: 0;
+        margin-bottom: 10px;
+    }
+
+    .modal_list_price {
+        font-size: 11px;
+    }
+
+    .modal_title {
+        margin-bottom: 0; 
+    }
+
+    .modal_container {
+        padding: 30px 30px 5px 30px;
+    }
+
+    .modal {
+        overflow: auto;
+    }
 }
 
 @media (max-width: 480px) {
@@ -788,4 +898,12 @@ body {
     .title_name_rest {
         font-size: 13px;
     }    
+
+    .modal_title_text {
+        display: none;
+    }
+
+    .modal_title {
+        justify-content: end;
+    }
 }
