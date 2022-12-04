@@ -4,11 +4,14 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/stylr.css">
     <link rel="stylesheet" href="css/normalize.css">
+    <script src="/script/script.js" defer></script>
+    <script src="/script/wow.min.js"></script>
     <title>Delivery food</title>
 </head>
 <body>
@@ -46,7 +49,7 @@
                 </div>
         
                 <div class="cards_rest">
-                    <a href="#" class="card">
+                    <a href="#" class="card animate__animated animate__fadeInLeft">
                         <img src="/img/img rest 1.png" alt="" class="img_card">
                         <div class="rest_about">
                             <div class="rest_about_text">
@@ -62,7 +65,7 @@
                             </div>
                         </div>
                     </a>
-                    <a href="#" class="card">
+                    <a href="#" class="card animate__animated animate__fadeInUp">
                         <img src="/img/img rest 2.png" alt="" class="img_card">
                         <div class="rest_about">
                             <div class="rest_about_text">
@@ -78,7 +81,7 @@
                             </div>
                         </div>
                     </a>
-                    <a href="#" class="card">
+                    <a href="#" class="card animate__animated animate__fadeInRight">
                         <img src="/img/img rest 3.png" alt="" class="img_card">
                         <div class="rest_about">
                             <div class="rest_about_text">
@@ -94,7 +97,7 @@
                             </div>
                         </div>
                     </a>
-                    <a href="#" class="card">
+                    <a href="#" class="card wow animate__animated animate__fadeInLeft">
                         <img src="/img/img rest 4.png" alt="" class="img_card">
                         <div class="rest_about">
                             <div class="rest_about_text">
@@ -110,7 +113,7 @@
                             </div>
                         </div>
                     </a>
-                    <a href="#" class="card">
+                    <a href="#" class="card wow animate__animated animate__fadeInUp wow">
                         <img src="/img/img rest 5.png" alt="" class="img_card">
                         <div class="rest_about">
                             <div class="rest_about_text">
@@ -126,7 +129,7 @@
                             </div>
                         </div>
                     </a>
-                    <a href="/rest.html" class="card">
+                    <a href="/rest.html" class="card wow animate__animated animate__fadeInRight wow">
                         <img src="/img/img rest 6.png" alt="" class="img_card">
                         <div class="rest_about">
                             <div class="rest_about_text">
@@ -168,5 +171,70 @@
             </div>
         </div>
     </footer>
+
+    <div class="modal">
+        <div class="modal_container">
+            <div class="modal_title">
+                <h1 class="modal_title_text">Корзина</h1>
+                <button type="button" class="modal_title_button">
+                    <img src="/img/exitImg.svg" alt="">
+                </button>
+            </div>
+            <div class="about_product_buy"> 
+                <ul class="modal_list">
+                    <li class="modal_list_item">
+                        <div class="modal_list_text">Ролл угорь стандарт</div>
+                        <div class="modal_list_price">250 ₽</div>
+                        <div class="modal_list_buttons">
+                            <button type="button" class="modal_list_buttons_minus">-</button>
+                            <span class="modal_list_buttons_number">1</span>
+                            <button type="button" class="modal_list_buttons_plus">+</button>
+                        </div>
+                    </li>
+                    <li class="modal_list_item">
+                        <div class="modal_list_text">Ролл угорь стандарт</div>
+                        <div class="modal_list_price">250 ₽</div>
+                        <div class="modal_list_buttons">
+                            <button type="button" class="modal_list_buttons_minus">-</button>
+                            <span class="modal_list_buttons_number">1</span>
+                            <button type="button" class="modal_list_buttons_plus">+</button>
+                        </div>
+                    </li>
+                    <li class="modal_list_item">
+                        <div class="modal_list_text">Ролл угорь стандарт</div>
+                        <div class="modal_list_price">250 ₽</div>
+                        <div class="modal_list_buttons">
+                            <button type="button" class="modal_list_buttons_minus">-</button>
+                            <span class="modal_list_buttons_number">1</span>
+                            <button type="button" class="modal_list_buttons_plus">+</button>
+                        </div>
+                    </li>
+                    <li class="modal_list_item">
+                        <div class="modal_list_text">Ролл угорь стандарт</div>
+                        <div class="modal_list_price">250 ₽</div>
+                        <div class="modal_list_buttons">
+                            <button type="button" class="modal_list_buttons_minus">-</button>
+                            <span class="modal_list_buttons_number">1</span>
+                            <button type="button" class="modal_list_buttons_plus">+</button>
+                        </div>
+                    </li>
+                    <li class="modal_list_item">
+                        <div class="modal_list_text">Ролл угорь стандарт</div>
+                        <div class="modal_list_price">250 ₽</div>
+                        <div class="modal_list_buttons">
+                            <button type="button" class="modal_list_buttons_minus">-</button>
+                            <span class="modal_list_buttons_number">1</span>
+                            <button type="button" class="modal_list_buttons_plus">+</button>
+                        </div>
+                    </li>
+                </ul>     
+            </div>
+            <div class="modal_buttons_buy">
+                <div class="modal_button_buy_price" >1250 ₽</div>
+                <button class="modal_button_buy_complete" type="button">Оформить заказ</button>
+                <button class="modal_button_buy_cancel" type="button">Отмена</button>
+            </div>
+        </div>
+    </div>
 </body> 
 </html>
