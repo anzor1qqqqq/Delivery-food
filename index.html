@@ -25,10 +25,15 @@
                     <img src="img/signIN.svg" alt="" class="img_button_head">
                     <span style="padding-top: 2px;" class="button_signin_text">Войти</span> 
                 </button>
-                <button class="button_basket">
+                <button class="button_basket" style="display: none;">
                     <img src="img/basket.svg" alt="" class="img_button_head">
                     <span class="button_basket_text">Корзина</span>
                 </button>
+                <span class="user-name"></span>
+                <button class="button-out">
+					<span class="button-text">Выйти</span>
+					<span class="button-out-svg"></span>
+				</button>
             </div>
         </div>
     </header>
@@ -49,6 +54,7 @@
                 </div>
         
                 <div class="cards_rest">
+
                     <a href="#" class="card animate__animated animate__fadeInLeft">
                         <img src="/img/img rest 1.png" alt="" class="img_card">
                         <div class="rest_about">
@@ -65,6 +71,7 @@
                             </div>
                         </div>
                     </a>
+
                     <a href="#" class="card animate__animated animate__fadeInUp">
                         <img src="/img/img rest 2.png" alt="" class="img_card">
                         <div class="rest_about">
@@ -81,6 +88,7 @@
                             </div>
                         </div>
                     </a>
+
                     <a href="#" class="card animate__animated animate__fadeInRight">
                         <img src="/img/img rest 3.png" alt="" class="img_card">
                         <div class="rest_about">
@@ -97,6 +105,7 @@
                             </div>
                         </div>
                     </a>
+
                     <a href="#" class="card wow animate__animated animate__fadeInLeft">
                         <img src="/img/img rest 4.png" alt="" class="img_card">
                         <div class="rest_about">
@@ -113,6 +122,7 @@
                             </div>
                         </div>
                     </a>
+
                     <a href="#" class="card wow animate__animated animate__fadeInUp wow">
                         <img src="/img/img rest 5.png" alt="" class="img_card">
                         <div class="rest_about">
@@ -129,6 +139,7 @@
                             </div>
                         </div>
                     </a>
+
                     <a href="/rest.html" class="card wow animate__animated animate__fadeInRight wow">
                         <img src="/img/img rest 6.png" alt="" class="img_card">
                         <div class="rest_about">
@@ -145,6 +156,7 @@
                             </div>
                         </div>
                     </a>
+
                 </div>
             </section>
         </div>
@@ -236,5 +248,33 @@
             </div>
         </div>
     </div>
+
+    <div class="modal-auth">
+		<div class="modal-dialog modal-dialog-auth">
+			<button class="close-auth">&times;</button>
+			<form id="logInForm">
+				<fieldset class="modal-body">
+					<legend class="modal-title">Авторизация</legend>
+					<label class="label-auth">
+						<span>Логин</span>
+						<input id="login" type="text">
+					</label>
+					<label class="label-auth">
+						<span>Пароль</span>
+						<input id="password" type="password">
+					</label>
+				</fieldset>
+				<!-- /.modal-body -->
+				<div class="modal-footer">
+					<div class="footer-buttons">
+						<button class="button_sigin" type="submit">Войти</button>
+					</div>
+				</div>
+			</form>
+			<!-- /.modal-footer -->
+		</div>
+		<!-- /.modal-dialog -->
+	</div>
+
 </body> 
 </html>
