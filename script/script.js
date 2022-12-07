@@ -59,7 +59,8 @@ let modalAuth = () => {
 
         let logIn = (event) => {
             event.preventDefault(); 
-            if (loginText.value != '') {
+
+            if (loginText.value.trim()) {
                 user = loginText.value;
                 localStorage.setItem('FirstUser', user);
                 checkAuth();
@@ -86,8 +87,6 @@ let modalAuth = () => {
 
     checkAuth();
 };
-
-
 
 modalAuth();
 modalBasket();
