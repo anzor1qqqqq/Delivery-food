@@ -26,6 +26,10 @@ body {
     align-items: center;
 }
 
+.container {
+    padding-bottom: 50px;
+}
+
 .button-out {
     width: 80px;
     height: 40px;
@@ -170,6 +174,18 @@ body {
     flex-wrap: wrap;
     align-items: flex-start;
     justify-content: space-between;
+} 
+
+.logo {
+    cursor: pointer;
+}
+
+.card_rest_menu {
+    margin-top: 50px;
+    display: none;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
 }
 
 .card {
@@ -179,11 +195,13 @@ body {
     box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.05);
     margin-bottom: 25px;
     text-decoration: none;
+    cursor: pointer;
 }
 
 .img_card {
     width: 100%;
     object-fit: cover;
+    height: 232px;
 }
 
 .rest_about {
@@ -240,10 +258,6 @@ body {
     white-space: nowrap;
     overflow: hidden; 
     text-overflow: ellipsis;
-}
-
-.price {
-    margin-right: 5px
 }
 
 .price::after {
@@ -643,6 +657,15 @@ body {
 .footer-buttons {
     display: flex;
     align-items: center;
+}
+
+.stars_rest {
+    color: #FFC107;
+    font-weight: 700;
+    font-size: 15px;
+    padding-top: 4px;
+    margin-left: 5px;
+    margin-right: 25px;
 }
 
 @media (max-width: 1340px) {
