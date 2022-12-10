@@ -1,3 +1,5 @@
+'use strict';
+
 let servHTTP = (url, callback) => {
     let request = new XMLHttpRequest();
     request.open ('GET', url);
@@ -27,81 +29,80 @@ let modalBasket = () => {
     });
 };
 
-let modalAuth = () => {
-    const buttonSigin = document.querySelector('.button_sigin');
-    const modalAuthElem = document.querySelector('.modal-auth');
-    const closeAuthButton = document.querySelector('.close-auth');
-    const logInFormElem = document.querySelector('#logInForm');
-    const loginText = document.querySelector('#login');
-    //const passwordText = document.querySelector('#password');
-    const userName = document.querySelector('.user-name');
-    const buttonOut = document.querySelector('.button-out');
+const buttonSigin = document.querySelector('.button_sigin');
+const modalAuthElem = document.querySelector('.modal-auth');
+const closeAuthButton = document.querySelector('.close-auth');
+const logInFormElem = document.querySelector('#logInForm');
+const loginText = document.querySelector('#login');
+const userName = document.querySelector('.user-name');
+const buttonOut = document.querySelector('.button-out');
 
-    let openCloseModal = () => {
-        modalAuthElem.classList.toggle('is-open');
-        modalAuthElem.classList.contains('is-open') ? document.body.style.overflowY = 'hidden' : document.body.style.overflowY = '';
-    };
+let openCloseModal = () => {
+    modalAuthElem.classList.toggle('is-open');
+    modalAuthElem.classList.contains('is-open') ? document.body.style.overflowY = 'hidden' : document.body.style.overflowY = '';
+};
 
-    let user = localStorage.getItem('FirstUser');
+let user = localStorage.getItem('FirstUser');
 
-    let authorized = () => {
-        let logOut = () => {
-            user = null;
-            buttonSigin.style.display = 'flex';
-            userName.style.display = '';
-            buttonOut.style.display = '';
-            userName.textContent = '';    
-            buttonOut.removeEventListener('click', logOut);
-            localStorage.clear();
-            logInFormElem.reset();
-            checkAuth();
-        };
-
-        buttonSigin.style.display = 'none';
-        userName.style.display = 'inline-flex';
-        buttonOut.style.display = 'flex';
-        userName.textContent = user;    
-
-        buttonOut.addEventListener('click', logOut);
-    };
-
-    let noAuthorized = () => {  
-        let logIn = (event) => {
-            event.preventDefault(); 
-
-            if (loginText.value.trim()) {
-                user = loginText.value;
-                localStorage.setItem('FirstUser', user);
-                checkAuth();
-                openCloseModal();
-                closeAuthButton.removeEventListener('click', openCloseModal);
-                logInFormElem.removeEventListener('submit', logIn);
-            } else {
-                alert('Введите логин');
-            }
-        };
-
-        buttonSigin.addEventListener('click', openCloseModal);
-        closeAuthButton.addEventListener('click', openCloseModal);
-        logInFormElem.addEventListener('submit', logIn);
-    };
-
-    let checkAuth = () => {
-        if (user) {
-            authorized();
-        } else {
-            noAuthorized();
-        };
-    };
-
+let authorized = () => {
+    let logOut = () => {
+    user = null;
+    buttonSigin.style.display = 'flex';
+    userName.style.display = '';
+    buttonOut.style.display = '';
+    userName.textContent = '';    
+    buttonOut.removeEventListener('click', logOut);
+    localStorage.clear();
+    logInFormElem.reset();
     checkAuth();
 };
+
+    buttonSigin.style.display = 'none';
+    userName.style.display = 'inline-flex';
+    buttonOut.style.display = 'flex';
+    userName.textContent = user;    
+
+    buttonOut.addEventListener('click', logOut);
+};
+
+let noAuthorized = () => {  
+    let logIn = (event) => {
+        event.preventDefault(); 
+
+        if (loginText.value.trim()) {
+        user = loginText.value
+            localStorage.setItem('FirstUser', user);
+            checkAuth();
+            openCloseModal();
+            closeAuthButton.removeEventListener('click', openCloseModal);
+            logInFormElem.removeEventListener('submit', logIn);
+        } else {
+            alert('Введите логин');
+        }
+    };
+
+    buttonSigin.addEventListener('click', openCloseModal);
+    closeAuthButton.addEventListener('click', openCloseModal);
+    logInFormElem.addEventListener('submit', logIn);
+};
+
+let checkAuth = () => {
+    if (user) {
+        authorized();
+    } else {
+        noAuthorized();
+    };
+};
+
+checkAuth();
 
 let createCardRest = (elem) => {
     const cardsRest = document.querySelector('.cards_rest');
     const cardRestMenuElem = document.querySelector('.card_rest_menu');
     const promoElem = document.querySelector('.promo');
     const logo = document.querySelector('.logo_img');
+    const headTitleRest = document.querySelector('.head_title_rest');
+    const headSearchRest = document.querySelector('.head_search_rest');
 
     let card = '';
 
@@ -127,18 +128,12 @@ let createCardRest = (elem) => {
     `;
 
     cardsRest.insertAdjacentHTML('afterbegin', card);
-
-    
     };
 
-    //let cardElem = document.querySelectorAll('.card');
-
     let restMenu = (event) => {
-
-        let menu = '';
-
         let createRestMenu = (elem) => {
-            console.log(elem);
+            let menu = '';
+
             for (let i = 0; i < 6; i++) {
                 menu += `
                 <div class="card">
@@ -164,31 +159,36 @@ let createCardRest = (elem) => {
             };
         };
 
-         const target = event.target;
-         const targetCard = target.closest('.card');
-
-         let arr = targetCard.dataset.name;
+         let target = event.target;
+         let targetCard = target.closest('.card');
+         let textMenuRest = targetCard.querySelector('.title_name_rest');
 
          if (targetCard) {
+            if (!user) {
+                openCloseModal();
+            } else {
+            let arr = targetCard.dataset.name;
+            headTitleRest.textContent = textMenuRest.textContent;
            cardsRest.style.display = 'none';
            cardRestMenuElem.style.display = 'flex';   
            promoElem.style.display = 'none';
+           headSearchRest.style.display = 'none';
            servHTTP(`db/${arr}`, createRestMenu);
+            };
          };
 
          logo.addEventListener('click', () => {
             cardsRest.style.display = '';
             cardRestMenuElem.style.display = 'none';   
             promoElem.style.display = '';
+            headSearchRest.style.display = '';
+            headTitleRest.textContent = 'Рестораны'
         });
     };
 
     cardsRest.addEventListener('click', restMenu);
 };
 
-
-
-modalAuth();
 modalBasket();
 new WOW().init();
 
