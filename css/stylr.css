@@ -133,22 +133,6 @@ body {
     overflow: hidden;
 }
 
-
-/*.promo {
-    box-shadow: 0px 7px 12px rgba(158, 158, 163, 0.1);
-    border-radius: 5px;
-    width: 1200px;
-    max-width: 95%;
-    margin: auto;
-    display: flex;
-}
-
-.content_promo_text {
-    width: 540px;
-    height: 175px;  
-    margin: 60px 0 60px 70px;
-}
-
 .promo_title {
     font-style: normal;
     font-weight: 700;
@@ -164,7 +148,7 @@ body {
     line-height: 28px;
     margin-top: 20px;
     margin-bottom: 0;
-}*/
+}
 
 .rest {
     width: 1200px;

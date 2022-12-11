@@ -1,5 +1,7 @@
 'use strict';
 
+let regExp = /^\w+@\w+\.\w{2,}$/;
+
 let servHTTP = (url, callback) => {
     let request = new XMLHttpRequest();
     request.open ('GET', url);
@@ -69,16 +71,17 @@ let noAuthorized = () => {
     let logIn = (event) => {
         event.preventDefault(); 
 
-        if (loginText.value.trim()) {
-        user = loginText.value
+        if (!regExp.test(loginText.value)) {
+            alert('Введен некорректный email');
+            logInFormElem.reset();
+        } else {
+            user = loginText.value
             localStorage.setItem('FirstUser', user);
             checkAuth();
             openCloseModal();
             closeAuthButton.removeEventListener('click', openCloseModal);
             logInFormElem.removeEventListener('submit', logIn);
-        } else {
-            alert('Введите логин');
-        }
+        };
     };
 
     buttonSigin.addEventListener('click', openCloseModal);
@@ -176,6 +179,14 @@ let createCardRest = (elem) => {
            servHTTP(`db/${arr}`, createRestMenu);
             };
          };
+
+         buttonOut.addEventListener('click', () => {
+            cardsRest.style.display = '';
+            cardRestMenuElem.style.display = 'none';   
+            promoElem.style.display = '';
+            headSearchRest.style.display = '';
+            headTitleRest.textContent = 'Рестораны'
+         });
 
          logo.addEventListener('click', () => {
             cardsRest.style.display = '';
