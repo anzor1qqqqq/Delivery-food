@@ -28,6 +28,8 @@ body {
 
 .container {
     padding-bottom: 50px;
+    max-width: 1200px;
+    margin: auto;
 }
 
 .button-out {
@@ -99,15 +101,46 @@ body {
     margin: auto;
 }
 
-.promo {
-    width: 1200px;
-    max-width: 95%;
-    display: flex;
-    margin: auto;
+.pizza {
     background: #FFF1B8 no-repeat right -80px top -100px / 800px url(../img/3shzhsho-transformed.png);
-    margin-top: 20px;
+}
+
+.kebab {
+    background: #D6E4FF url(../img/promo/kebab.png) no-repeat top 45px right 40px / 450px;
+}
+
+.vegetables {
+    background: #FFF566 url(../img/promo/vegetables.png) no-repeat top 0 right 0 / 825px
+}
+
+.sushi {
+    background: #FFF1F0 url(../img/promo/sushi.png) no-repeat top 10px right 15px / 500px
+}
+
+.promo {
+    box-shadow: 0 7px 12px rgba(158, 158, 163, 0.1);
+    border-radius: 10px;
+    padding: 68px 70px;
+    margin-bottom: 56px;
+    height: 300px;
+}
+
+.text_promo {
+    margin: 0;
+}
+
+.swiper-container {
+    overflow: hidden;
+}
+
+
+/*.promo {
     box-shadow: 0px 7px 12px rgba(158, 158, 163, 0.1);
     border-radius: 5px;
+    width: 1200px;
+    max-width: 95%;
+    margin: auto;
+    display: flex;
 }
 
 .content_promo_text {
@@ -131,7 +164,7 @@ body {
     line-height: 28px;
     margin-top: 20px;
     margin-bottom: 0;
-}
+}*/
 
 .rest {
     width: 1200px;

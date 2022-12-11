@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.css" />
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -42,12 +45,35 @@
 
     <main class="main">
         <div class="container">
-            <section class="promo">
-                <div class="content_promo_text">
+
+            <div class="promo_contant swiper-container">
+                <div class="swiper-wrapper">
+
+            <section class="promo pizza swiper-slide">
                     <h1 class="promo_title">Онлайн-сервис <br/> доставки еды на дом</h1>
                     <p class="text_promo">Блюда из любимого ресторана привезет <br/> курьер в перчатках, маске и с антисептиком</p>
-                </div>
             </section>
+
+             <section class="promo kebab swiper-slide">
+					<h1 class="promo_title">Шашлыки на майские <br> со скидкой 35%</h1>
+					<p class="text_promo">
+						Закажите шашлыки в любом ресторане до 10 мая и получите скидку <br>по промокоду OMAGAD
+					</p>
+				</section>
+
+				<section class="promo vegetables swiper-slide">
+					<h1 class="promo_title">Скидка 20% на всю еду <br> по промокоду EDAFOOTBALL</h1>
+					<p class="text_promo">
+						Блюдо из ресторана привезут вместе с двумя подарочными книгами по фронтенду
+				</section>
+
+				<section class="promo sushi swiper-slide">
+					<h1 class="promo_title">Сеты со скидкой до 30% <br> в ресторанах</h1>
+					<p class="text_promo">
+						Скидки на сеты до 30 мая по промокоду DADADA
+				</section> 
+            </div>
+        </div>
         
             <section class="rest">
                 <div class="head_rest">
@@ -166,16 +192,13 @@
 						<input id="password" type="password">
 					</label>
 				</fieldset>
-				<!-- /.modal-body -->
 				<div class="modal-footer">
 					<div class="footer-buttons">
 						<button class="button_sigin" type="submit">Войти</button>
 					</div>
 				</div>
 			</form>
-			<!-- /.modal-footer -->
 		</div>
-		<!-- /.modal-dialog -->
 	</div>
 
 </body> 

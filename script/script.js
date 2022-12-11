@@ -99,7 +99,7 @@ checkAuth();
 let createCardRest = (elem) => {
     const cardsRest = document.querySelector('.cards_rest');
     const cardRestMenuElem = document.querySelector('.card_rest_menu');
-    const promoElem = document.querySelector('.promo');
+    const promoElem = document.querySelector('.promo_contant');
     const logo = document.querySelector('.logo_img');
     const headTitleRest = document.querySelector('.head_title_rest');
     const headSearchRest = document.querySelector('.head_search_rest');
@@ -193,3 +193,11 @@ modalBasket();
 new WOW().init();
 
 servHTTP('db/partners.json', createCardRest);
+
+
+new Swiper('.swiper-container',  {
+    loop: true,
+    autoplay: {
+        delay: 4000,
+    }
+});
