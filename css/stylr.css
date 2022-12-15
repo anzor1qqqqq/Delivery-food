@@ -162,6 +162,11 @@ body {
     align-items: center;
 }
 
+.rest_about_header {
+    display: none;
+    align-items: center;
+}
+
 .head_title_rest {
     font-style: normal;
     font-weight: 700;
@@ -356,7 +361,7 @@ body {
 .button_food {
     margin-right: 25px;
     background: #1890FF;
-    border-radius: 2px;
+    border-radius: 7px;
     padding: 10px 30px 8px 15px;
     border: 1px solid #BFBFBF;
     color: #FFFFFF;

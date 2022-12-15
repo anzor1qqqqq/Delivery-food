@@ -38,6 +38,10 @@ const logInFormElem = document.querySelector('#logInForm');
 const loginText = document.querySelector('#login');
 const userName = document.querySelector('.user-name');
 const buttonOut = document.querySelector('.button-out');
+const restAboutHeader = document.querySelector('.rest_about_header');
+const price = document.querySelector('.price');
+const category = document.querySelector('.category');
+const starsRest = document.querySelector('.stars_rest');
 
 let openCloseModal = () => {
     modalAuthElem.classList.toggle('is-open');
@@ -166,6 +170,10 @@ let createCardRest = (elem) => {
          let targetCard = target.closest('.card');
          let textMenuRest = targetCard.querySelector('.title_name_rest');
 
+         let textPrice = targetCard.querySelector('.price');
+         let numStarsText = targetCard.querySelector('.stars_rest');
+         let categoryText = targetCard.querySelector('.category');
+
          if (targetCard) {
             if (!user) {
                 openCloseModal();
@@ -176,6 +184,10 @@ let createCardRest = (elem) => {
            cardRestMenuElem.style.display = 'flex';   
            promoElem.style.display = 'none';
            headSearchRest.style.display = 'none';
+           restAboutHeader.style.display = 'flex';
+           price.textContent = textPrice.textContent;
+           starsRest.textContent = numStarsText.textContent;
+           category.textContent = categoryText.textContent;
            servHTTP(`db/${arr}`, createRestMenu);
             };
          };
@@ -185,6 +197,7 @@ let createCardRest = (elem) => {
             cardRestMenuElem.style.display = 'none';   
             promoElem.style.display = '';
             headSearchRest.style.display = '';
+            restAboutHeader.style.display = '';
             headTitleRest.textContent = 'Рестораны'
          });
 
@@ -193,6 +206,7 @@ let createCardRest = (elem) => {
             cardRestMenuElem.style.display = 'none';   
             promoElem.style.display = '';
             headSearchRest.style.display = '';
+            restAboutHeader.style.display = '';
             headTitleRest.textContent = 'Рестораны'
         });
     };
@@ -210,5 +224,6 @@ new Swiper('.swiper-container',  {
     loop: true,
     autoplay: {
         delay: 4000,
-    }
+    },
+    speed: 700
 });
