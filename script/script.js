@@ -15,22 +15,6 @@ let servHTTP = (url, callback) => {
     });
 };
 
-let modalBasket = () => {
-    const buttonBasketElem = document.querySelector('.button_basket');
-    const modal = document.querySelector('.modal');
-    const modalTitleButton = document.querySelector('.modal_title_button');
-
-    buttonBasketElem.addEventListener('click', () => {
-        modal.classList.add('active');
-        document.body.style.overflowY = 'hidden';
-    });
-
-    modalTitleButton.addEventListener('click', () => {
-        modal.classList.remove('active');
-        document.body.style.overflowY = '';
-    });
-};
-
 const buttonSigin = document.querySelector('.button_sigin');
 const modalAuthElem = document.querySelector('.modal-auth');
 const closeAuthButton = document.querySelector('.close-auth');
@@ -42,6 +26,23 @@ const restAboutHeader = document.querySelector('.rest_about_header');
 const price = document.querySelector('.price');
 const category = document.querySelector('.category');
 const starsRest = document.querySelector('.stars_rest');
+const buttonBasket = document.querySelector('.button_basket');
+const cardRestMenuElem = document.querySelector('.card_rest_menu');
+const buttonBasketElem = document.querySelector('.button_basket');
+const modal = document.querySelector('.modal');
+const modalTitleButton = document.querySelector('.modal_title_button');
+
+const basket = [];
+
+let openBusket = () => {
+    modal.classList.add('active');
+    document.body.style.overflowY = 'hidden';
+
+    modalTitleButton.addEventListener('click', () => {
+        modal.classList.remove('active');
+        document.body.style.overflowY = '';
+    });
+};
 
 let openCloseModal = () => {
     modalAuthElem.classList.toggle('is-open');
@@ -55,6 +56,7 @@ let authorized = () => {
     user = null;
     buttonSigin.style.display = 'flex';
     userName.style.display = '';
+    buttonBasket.style.display = '';
     buttonOut.style.display = '';
     userName.textContent = '';    
     buttonOut.removeEventListener('click', logOut);
@@ -67,6 +69,7 @@ let authorized = () => {
     userName.style.display = 'inline-flex';
     buttonOut.style.display = 'flex';
     userName.textContent = user;    
+    buttonBasket.style.display = 'flex';
 
     buttonOut.addEventListener('click', logOut);
 };
@@ -79,12 +82,12 @@ let noAuthorized = () => {
             alert('Введен некорректный email');
             logInFormElem.reset();
         } else {
-            user = loginText.value
+            user = loginText.value;
             localStorage.setItem('FirstUser', user);
             checkAuth();
             openCloseModal();
             closeAuthButton.removeEventListener('click', openCloseModal);
-            logInFormElem.removeEventListener('submit', logIn);
+            logInFormElem.removeEventListener('submit', logIn);    
         };
     };
 
@@ -105,7 +108,6 @@ checkAuth();
 
 let createCardRest = (elem) => {
     const cardsRest = document.querySelector('.cards_rest');
-    const cardRestMenuElem = document.querySelector('.card_rest_menu');
     const promoElem = document.querySelector('.promo_contant');
     const logo = document.querySelector('.logo_img');
     const headTitleRest = document.querySelector('.head_title_rest');
@@ -143,7 +145,7 @@ let createCardRest = (elem) => {
 
             for (let i = 0; i < 6; i++) {
                 menu += `
-                <div class="card">
+                <div class="card" data-id = "${elem[i].id}" >
                         <img src="${elem[i].image}" alt="" class="img_card">
                         <div class="rest_about">
                             <div class="rest_about_text">
@@ -168,27 +170,27 @@ let createCardRest = (elem) => {
 
          let target = event.target;
          let targetCard = target.closest('.card');
-         let textMenuRest = targetCard.querySelector('.title_name_rest');
-
-         let textPrice = targetCard.querySelector('.price');
-         let numStarsText = targetCard.querySelector('.stars_rest');
-         let categoryText = targetCard.querySelector('.category');
 
          if (targetCard) {
             if (!user) {
                 openCloseModal();
             } else {
+            let textMenuRest = targetCard.querySelector('.title_name_rest');
+            let textPrice = targetCard.querySelector('.price');
+            let numStarsText = targetCard.querySelector('.stars_rest');
+            let categoryText = targetCard.querySelector('.category');
             let arr = targetCard.dataset.name;
+
             headTitleRest.textContent = textMenuRest.textContent;
-           cardsRest.style.display = 'none';
-           cardRestMenuElem.style.display = 'flex';   
-           promoElem.style.display = 'none';
-           headSearchRest.style.display = 'none';
-           restAboutHeader.style.display = 'flex';
-           price.textContent = textPrice.textContent;
-           starsRest.textContent = numStarsText.textContent;
-           category.textContent = categoryText.textContent;
-           servHTTP(`db/${arr}`, createRestMenu);
+            cardsRest.style.display = 'none';
+            cardRestMenuElem.style.display = 'flex';   
+            promoElem.style.display = 'none';
+            headSearchRest.style.display = 'none';
+            restAboutHeader.style.display = 'flex';
+            price.textContent = textPrice.textContent;
+            starsRest.textContent = numStarsText.textContent;
+            category.textContent = categoryText.textContent;
+            servHTTP(`db/${arr}`, createRestMenu);
             };
          };
 
@@ -214,16 +216,78 @@ let createCardRest = (elem) => {
     cardsRest.addEventListener('click', restMenu);
 };
 
-modalBasket();
-new WOW().init();
+let formBasket = (event) => {
+    const target = event.target;
+    const card = target.closest('.card');
+    const modalList = document.querySelector('.modal_list');
+    const modalButtonBuyPrice = document.querySelector('.modal_button_buy_price');
 
-servHTTP('db/partners.json', createCardRest);
+    let renderBusket = () => { 
+        let text = '';
+        let sum = 0;
+        modalList.replaceChildren() ;
+        basket.forEach(({price, nameFood, count}) => {
+            text =  `
+                    <li class="modal_list_item">
+                        <div class="modal_list_text">${nameFood}</div>
+                        <div class="modal_list_price">${price} ₽</div>
+                        <div class="modal_list_buttons">
+                            <button type="button" class="modal_list_buttons_minus">-</button>
+                            <span class="modal_list_buttons_number">${count}</span>
+                            <button type="button" class="modal_list_buttons_plus">+</button>
+                        </div>
+                    </li>
+            `;
 
+            modalList.insertAdjacentHTML('beforeend', text);
+        });
 
-new Swiper('.swiper-container',  {
-    loop: true,
-    autoplay: {
-        delay: 4000,
-    },
-    speed: 700
-});
+        basket.reduce((elem, item) => {
+            return sum = elem + parseFloat(item.price);
+        }, 0);
+
+        modalButtonBuyPrice.textContent = sum + ' ₽';
+    };
+
+    if (card && target.closest('.button_food')) {
+        const price = card.querySelector('.price_food').textContent;
+        const nameFood = card.querySelector('.title_name_food').textContent;
+        const idFood = card.dataset.id; 
+        
+        const food = (basket.find((item)=> {
+            return item.idFood === idFood;
+        }));
+
+        if (!food) {
+            basket.push({price: price.substring(0, price.indexOf('₽')).trim(), nameFood, idFood, count:1});  
+        } else {
+            basket.forEach((elem) => {
+                if (elem.idFood == idFood) {
+                elem.price = Number(elem.price);
+                elem.price += elem.price; 
+                elem.count += 1;
+                }
+            });
+        };
+        console.log(basket);
+        renderBusket();
+    };
+
+};
+
+let init = () => {
+    new WOW().init();
+    servHTTP('db/partners.json', createCardRest);
+    new Swiper('.swiper-container',  {
+        loop: true,
+        autoplay: {
+            delay: 4000,
+        },
+        speed: 700
+    });
+    
+    cardRestMenuElem.addEventListener('click', formBasket);
+    buttonBasketElem.addEventListener('click', openBusket);
+};
+
+init();
