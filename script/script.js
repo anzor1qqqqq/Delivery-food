@@ -22,18 +22,22 @@ const logInFormElem = document.querySelector('#logInForm');
 const loginText = document.querySelector('#login');
 const userName = document.querySelector('.user-name');
 const buttonOut = document.querySelector('.button-out');
+
 const restAboutHeader = document.querySelector('.rest_about_header');
 const price = document.querySelector('.price');
 const category = document.querySelector('.category');
 const starsRest = document.querySelector('.stars_rest');
 const buttonBasket = document.querySelector('.button_basket');
 const cardRestMenuElem = document.querySelector('.card_rest_menu');
-const buttonBasketElem = document.querySelector('.button_basket');
+
 const modal = document.querySelector('.modal');
 const modalTitleButton = document.querySelector('.modal_title_button');
+const modalList = document.querySelector('.modal_list');
+const modalButtonBuyPrice = document.querySelector('.modal_button_buy_price');
+const modalButtonCancel = document.querySelector('.modal_button_buy_cancel');
 
-const basket = [];
-
+let basket = [];
+    
 let openBusket = () => {
     modal.classList.add('active');
     document.body.style.overflowY = 'hidden';
@@ -58,9 +62,9 @@ let authorized = () => {
     userName.style.display = '';
     buttonBasket.style.display = '';
     buttonOut.style.display = '';
-    userName.textContent = '';    
+    userName.textContent = '';  
     buttonOut.removeEventListener('click', logOut);
-    localStorage.clear();
+    localStorage.removeItem('FirstUser');
     logInFormElem.reset();
     checkAuth();
 };
@@ -219,40 +223,12 @@ let createCardRest = (elem) => {
 let formBasket = (event) => {
     const target = event.target;
     const card = target.closest('.card');
-    const modalList = document.querySelector('.modal_list');
-    const modalButtonBuyPrice = document.querySelector('.modal_button_buy_price');
-
-    let renderBusket = () => { 
-        let text = '';
-        let sum = 0;
-        modalList.replaceChildren() ;
-        basket.forEach(({price, nameFood, count}) => {
-            text =  `
-                    <li class="modal_list_item">
-                        <div class="modal_list_text">${nameFood}</div>
-                        <div class="modal_list_price">${price} ₽</div>
-                        <div class="modal_list_buttons">
-                            <button type="button" class="modal_list_buttons_minus">-</button>
-                            <span class="modal_list_buttons_number">${count}</span>
-                            <button type="button" class="modal_list_buttons_plus">+</button>
-                        </div>
-                    </li>
-            `;
-
-            modalList.insertAdjacentHTML('beforeend', text);
-        });
-
-        basket.reduce((elem, item) => {
-            return sum = elem + parseFloat(item.price);
-        }, 0);
-
-        modalButtonBuyPrice.textContent = sum + ' ₽';
-    };
 
     if (card && target.closest('.button_food')) {
         const price = card.querySelector('.price_food').textContent;
         const nameFood = card.querySelector('.title_name_food').textContent;
         const idFood = card.dataset.id; 
+        console.log(basket);
         
         const food = (basket.find((item)=> {
             return item.idFood === idFood;
@@ -263,16 +239,66 @@ let formBasket = (event) => {
         } else {
             basket.forEach((elem) => {
                 if (elem.idFood == idFood) {
-                elem.price = Number(elem.price);
-                elem.price += elem.price; 
                 elem.count += 1;
                 }
             });
         };
-        console.log(basket);
+        renderBusket();
+    };
+};
+
+let renderBusket = () => { 
+    modalList.replaceChildren();
+    basket.forEach(({price, nameFood, count, idFood}) => {
+        const text =  `
+                <li class="modal_list_item" >
+                    <div class="modal_list_text">${nameFood}</div>
+                    <div class="modal_list_price">${price} ₽</div>
+                    <div class="modal_list_buttons">
+                        <button type="button" class="modal_list_buttons_minus" data-counter="${idFood}">-</button>
+                        <span class="modal_list_buttons_number">${count}</span>
+                        <button type="button" class="modal_list_buttons_plus" data-counter="${idFood}">+</button>
+                    </div>
+                </li>
+        `;
+
+        modalList.insertAdjacentHTML('beforeend', text);
+    });
+
+    const sum = basket.reduce((elem, item) => {
+        return elem + parseFloat(item.price) * item.count;
+    }, 0);
+
+    modalButtonBuyPrice.textContent = sum + ' ₽';
+};
+
+let counterChange = (event) => {
+    const target = event.target;
+
+    if (target.classList.contains('modal_list_buttons_minus')) {
+        const food = basket.find((item) => {
+            return target.dataset.counter === item.idFood;
+        });
+
+        if (food.count > 0) {
+            food.count--;
+        };
+        
+        if (food.count == 0) { 
+            basket.splice(basket.indexOf(food), 1);
+        };
+
         renderBusket();
     };
 
+    if (target.classList.contains('modal_list_buttons_plus')) {
+        const food = basket.find((item) => {
+            return target.dataset.counter === item.idFood;
+        });
+
+        food.count++;
+        renderBusket();
+    };
 };
 
 let init = () => {
@@ -285,9 +311,17 @@ let init = () => {
         },
         speed: 700
     });
-    
+
     cardRestMenuElem.addEventListener('click', formBasket);
-    buttonBasketElem.addEventListener('click', openBusket);
+    buttonBasket.addEventListener('click', () => {  
+        openBusket();
+        modalButtonCancel.addEventListener('click', () => {
+            modalList.replaceChildren();    
+            modalButtonBuyPrice.textContent = 0;
+            basket.length = 0;
+        });
+    });
+    modalList.addEventListener('click', counterChange)
 };
 
 init();
