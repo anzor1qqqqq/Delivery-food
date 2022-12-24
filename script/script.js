@@ -36,8 +36,14 @@ const modalList = document.querySelector('.modal_list');
 const modalButtonBuyPrice = document.querySelector('.modal_button_buy_price');
 const modalButtonCancel = document.querySelector('.modal_button_buy_cancel');
 
-let basket = [];
-    
+let user = localStorage.getItem('User');
+
+let basket = JSON.parse(localStorage.getItem('basketUser')) || [];
+
+let basketSave = () => {
+    localStorage.setItem('basketUser', JSON.stringify(basket));
+};
+
 let openBusket = () => {
     modal.classList.add('active');
     document.body.style.overflowY = 'hidden';
@@ -53,8 +59,6 @@ let openCloseModal = () => {
     modalAuthElem.classList.contains('is-open') ? document.body.style.overflowY = 'hidden' : document.body.style.overflowY = '';
 };
 
-let user = localStorage.getItem('FirstUser');
-
 let authorized = () => {
     let logOut = () => {
     user = null;
@@ -64,7 +68,9 @@ let authorized = () => {
     buttonOut.style.display = '';
     userName.textContent = '';  
     buttonOut.removeEventListener('click', logOut);
-    localStorage.removeItem('FirstUser');
+    localStorage.removeItem('basketUser');
+    basket.length = 0;
+    localStorage.removeItem('User');
     logInFormElem.reset();
     checkAuth();
 };
@@ -86,8 +92,8 @@ let noAuthorized = () => {
             alert('Введен некорректный email');
             logInFormElem.reset();
         } else {
-            user = loginText.value;
-            localStorage.setItem('FirstUser', user);
+            user = loginText.value.substring(loginText.value.indexOf('@'), 0);
+            localStorage.setItem('User', user);
             checkAuth();
             openCloseModal();
             closeAuthButton.removeEventListener('click', openCloseModal);
@@ -228,7 +234,6 @@ let formBasket = (event) => {
         const price = card.querySelector('.price_food').textContent;
         const nameFood = card.querySelector('.title_name_food').textContent;
         const idFood = card.dataset.id; 
-        console.log(basket);
         
         const food = (basket.find((item)=> {
             return item.idFood === idFood;
@@ -240,10 +245,10 @@ let formBasket = (event) => {
             basket.forEach((elem) => {
                 if (elem.idFood == idFood) {
                 elem.count += 1;
-                }
+                };
             });
         };
-        renderBusket();
+        basketSave();
     };
 };
 
@@ -299,6 +304,8 @@ let counterChange = (event) => {
         food.count++;
         renderBusket();
     };
+    
+    basketSave();
 };
 
 let init = () => {
@@ -314,11 +321,13 @@ let init = () => {
 
     cardRestMenuElem.addEventListener('click', formBasket);
     buttonBasket.addEventListener('click', () => {  
+        renderBusket();
         openBusket();
         modalButtonCancel.addEventListener('click', () => {
             modalList.replaceChildren();    
             modalButtonBuyPrice.textContent = 0;
             basket.length = 0;
+            localStorage.removeItem('basketUser');
         });
     });
     modalList.addEventListener('click', counterChange)

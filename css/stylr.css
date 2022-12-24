@@ -1077,6 +1077,10 @@ body {
 }
 
 @media (max-width: 480px) {
+    .promo_contant {
+        margin-top: 50px;
+    }
+
     .footer_conteiner {
         flex-direction: column;
     }
