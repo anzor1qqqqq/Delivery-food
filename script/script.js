@@ -2,19 +2,6 @@
 
 let regExp = /^\w+@\w+\.\w{2,}$/;
 
-let servHTTP = (url, callback) => {
-    let request = new XMLHttpRequest();
-    request.open ('GET', url);
-    request.send();
-
-    request.addEventListener('readystatechange', () => {
-        if (request.status === 200 && request.readyState == 4) {
-            const objProd = JSON.parse(request.response);
-            callback(objProd);
-        };
-    });
-};
-
 const buttonSigin = document.querySelector('.button_sigin');
 const modalAuthElem = document.querySelector('.modal-auth');
 const closeAuthButton = document.querySelector('.close-auth');
@@ -36,8 +23,20 @@ const modalList = document.querySelector('.modal_list');
 const modalButtonBuyPrice = document.querySelector('.modal_button_buy_price');
 const modalButtonCancel = document.querySelector('.modal_button_buy_cancel');
 
-let user = localStorage.getItem('User');
+let servHTTP = (url, callback) => {
+    let request = new XMLHttpRequest();
+    request.open ('GET', url);
+    request.send();
 
+    request.addEventListener('readystatechange', () => {
+        if (request.status === 200 && request.readyState == 4) {
+            const objProd = JSON.parse(request.response);
+            callback(objProd);
+        };
+    });
+};
+
+let user = localStorage.getItem('User');
 let basket = JSON.parse(localStorage.getItem('basketUser')) || [];
 
 let basketSave = () => {
@@ -240,14 +239,15 @@ let formBasket = (event) => {
         }));
 
         if (!food) {
-            basket.push({price: price.substring(0, price.indexOf('₽')).trim(), nameFood, idFood, count:1});  
-        } else {
+            basket.push({price: price.substring(0, price.indexOf('₽')).trim(), nameFood, idFood, count: 1});  
+        } else {    
             basket.forEach((elem) => {
                 if (elem.idFood == idFood) {
                 elem.count += 1;
                 };
             });
         };
+
         basketSave();
     };
 };
